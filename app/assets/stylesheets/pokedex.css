@@ -1,0 +1,16 @@
+/*// Place all the styles related to the Pokedex controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/*/
+
+body {
+  background-image: url("background.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  font-family: 'Jura';
+  text-align: center;
+  margin: auto;
+  float: none;
+}
