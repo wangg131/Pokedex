@@ -21,10 +21,11 @@ html {
   background: tomato;
   margin: auto;
   float: none;
-  border-radius: 20px;
+  border-radius: 27px;
   border-style: solid;
   border-color: black;
   border-width: 2px;
+  position: relative;
 }
 
 .sprite {
@@ -33,8 +34,23 @@ html {
   background: white;
   border-radius: 20px;
   margin-left: 2.5em;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
+  position: absolute;
+
+}
+
+.description {
+  width: 310px;
+  height: 200px;
+  background: rgba(163, 255, 117, .9);
+  border-radius: 20px;
+  margin-top: 275px;
+  margin-left: 2.5em;
   position: absolute;
   border-style: solid;
   border-color: black;
   border-width: thin;
+  color: rgb(41, 122, 41);
 }
