@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/*/
 
-body {
+html {
   background-image: url("background.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -13,4 +13,28 @@ body {
   text-align: center;
   margin: auto;
   float: none;
+}
+
+.pokedex {
+  width: 400px;
+  height: 500px;
+  background: tomato;
+  margin: auto;
+  float: none;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+}
+
+.sprite {
+  width: 250px;
+  height: 200px;
+  background: white;
+  border-radius: 20px;
+  margin-left: 2.5em;
+  position: absolute;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
 }
