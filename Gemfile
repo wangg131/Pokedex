@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'pokegem'
 gem 'httparty', '~> 0.13.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

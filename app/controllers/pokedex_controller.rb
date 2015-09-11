@@ -19,10 +19,10 @@ class PokedexController < ApplicationController
   def show; end
 
   def fetching_data(response)
-    pokemons = response.fetch "pokemons", {}
+    pokemons = response.fetch, {}
     pokemons.map do |pokemon|
       {
-        name: pokemon["name"]
+        name: pokemon.fetch("name", "")
       }
     end
   end
