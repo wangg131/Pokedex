@@ -16,7 +16,7 @@ html {
 }
 
 .pokedex {
-  width: 400px;
+  width: 30%;
   height: 500px;
   background: tomato;
   margin: auto;
@@ -29,11 +29,13 @@ html {
 }
 
 .sprite {
-  width: 250px;
+  width: 60%;
+  left: 20%;
   height: 200px;
   background: white;
   border-radius: 20px;
-  margin-left: 2.5em;
+  margin: 0 auto;
+  margin-top: 20px;
   border-style: solid;
   border-color: black;
   border-width: thin;
@@ -42,12 +44,13 @@ html {
 }
 
 .description {
-  width: 310px;
+  width: 80%;
+  left: 10%;
   height: 200px;
   background: rgba(163, 255, 117, .9);
   border-radius: 20px;
-  margin-top: 275px;
-  margin-left: 2.5em;
+  margin: 0 auto;
+  margin-top: 270px;
   position: absolute;
   border-style: solid;
   border-color: black;
