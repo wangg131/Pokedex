@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  # controller :api do
-  #   # get '/search/', action: 'form'
-  #   get '/search/:artist', action: 'search'
-  #   get '/rando', action: 'rando'
-  # end
   root 'pokedex#index'
+  
+  controller :pokedex do
+    get '/search', action: 'search'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
