@@ -1,0 +1,6 @@
+<h1><%= "Gen 1 Field Pokedex" %></h1>
+<%= form_tag(root_path, method: "get", class: "navbar-form") do |f| %>
+    <h2><%= label_tag(:pokemon, "Find your Pokemanz")%></h2><br>
+    <%= text_field_tag(:pokemon, params[:id], size: 30, class: "text_box") %><br><br>
+    <%= submit_tag("Search", class: "search") %>
+<% end %>
