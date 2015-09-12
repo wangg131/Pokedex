@@ -20,22 +20,24 @@ class PokedexController < ApplicationController
   # end
 
   def fetching_data(response)
-    types = response.fetch("types").map { |type| { name: type.fetch("name") }}
-    descriptions = response.fetch("descriptions").map { |description| { name: description.fetch("name") }}
-    evolutions = response.fetch("evolutions").map do |evolution|
+    pokemon_types = response.fetch("types").map { |type| { name: type.fetch("name") }}
+    pokemon_description = response.fetch("descriptions").map { |description| { resource_uri: description.fetch("resource_uri") }}
+    pokemon_evolutions = response.fetch("evolutions").map do |evolution|
       {
         level: evolution.fetch("level"),
         method: evolution.fetch("method"),
         to: evolution.fetch("to")
       }
       end
+    pokemon_sprite = response.fetch("sprites").map { |sprite| { resource_uri: sprite.fetch("resource_uri") }}
 
     return {
       name: response.fetch("name"),
       id: response.fetch("national_id"),
-      types: types,
-      description: descriptions,
-      evolutions: evolutions
+      types: pokemon_types,
+      description: pokemon_description.first,
+      evolutions: pokemon_evolutions,
+      sprites: pokemon_sprite
       }
   end
 
