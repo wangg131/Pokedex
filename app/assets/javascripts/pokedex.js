@@ -12,10 +12,10 @@ $(function() {
     var formTag = searchButton.parents(".form");
     var text_box = formTag.children(".text_box");
     var search_input = text_box.val();
-    var url = "/search/" + search_input;
+    var url = "http://pokeapi.co/api/v1/pokemon/";
 
     $.ajax(url, {
-      type: GET,
+      type: 'GET',
       success: pokemonStats
     });
 
