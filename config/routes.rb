@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root 'pokedex#search'
+  root 'pokedex#search_form'
   controller :pokedex do
-    get '/results/:id', action: 'results', as: 'results'
+    get '/:id', action: 'search_query', as: 'search_query'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
