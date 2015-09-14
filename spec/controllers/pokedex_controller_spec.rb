@@ -20,8 +20,8 @@ RSpec.describe PokedexController, type: :controller do
       it "has the right keys" do
         data = JSON.parse response.body
 
-        %w(id).each do |key|
-          expect(data.map(&:keys).flatten.uniq).to include key
+        %w(name).each do |key|
+          expect(data.map(&:keys).flatten).to include key
         end
       end
     end
