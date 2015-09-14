@@ -57,3 +57,7 @@ html {
   border-width: thin;
   color: rgb(41, 122, 41);
 }
+
+img {
+  margin-top: 2em;
+}
