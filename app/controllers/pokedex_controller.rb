@@ -17,28 +17,17 @@ class PokedexController < ApplicationController
   def search_form; end
 
   def fetching_data(response)
-    pokemon_types = response.fetch("types").map { |type| { name: type.fetch("name") }}
+  #  pokemon_types = response.fetch("types").map { |type| { name: type.fetch("name") }}
     access_description = response.fetch("descriptions").map { |description| { resource_uri: description.fetch("resource_uri") }}
     pokemon_description = HTTParty.get(POKE_URI + access_description.first[:resource_uri])
-    pokemon_evolutions = response.fetch("evolutions").map do |evolution|
-      {
-        level: evolution.fetch("level"),
-        method: evolution.fetch("method"),
-        to: evolution.fetch("to")
-      }
-      end
     access_sprite = response.fetch("sprites").map { |sprite| { resource_uri: sprite.fetch("resource_uri") }}
     pokemon_sprite = HTTParty.get(POKE_URI + access_sprite.first[:resource_uri])
-
     response = {
       name: response.fetch("name"),
       id: response.fetch("national_id"),
-      type1: pokemon_types[0][:name],
-      type2: pokemon_types[1][:name],
+      # type1: pokemon_types[0][:name],
+      # type2: pokemon_types[1][:name],
       description: pokemon_description["description"],
-      level: pokemon_evolutions[0][:level],
-      method: pokemon_evolutions[0][:method],
-      to: pokemon_evolutions[0][:to],
       sprite: pokemon_sprite["image"]
       }
     return response

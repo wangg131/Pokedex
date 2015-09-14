@@ -21,14 +21,13 @@ $(function() {
 
   function displayData(data) {
       name_and_id = data.name + " #" + data.id;
-      var type1 = data.type1;
-      var type2 = data.type2;
+      // var type1 = data.type1;
+      // var type2 = data.type2;
       description = data.description;
-      evolutions = data.level + data.method + data.to;
       var sprite = "http://pokeapi.co" + data.sprite;
       var img = new Image();
       img.src = sprite;
-      $('.description').append(name_and_id, type1, type2, description, evolutions);
+      $('.description').append(name_and_id, description);
       $('.sprite').append(img);
     return data;
   }
