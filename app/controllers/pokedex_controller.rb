@@ -1,10 +1,10 @@
 class PokedexController < ApplicationController
 
-  POKESEARCH = "http://pokeapi.co/api/v1/pokemon/"
+  POKE_URI = "http://pokeapi.co"
 
   def search_query
     begin
-      response = HTTParty.get(POKESEARCH + params[:id]) #change to name
+      response = HTTParty.get(POKE_URI + "/api/v1/pokemon/" + params[:id]) #change to name
       data = fetching_data(response)
       code = :ok
     rescue
@@ -18,8 +18,8 @@ class PokedexController < ApplicationController
 
   def fetching_data(response)
     pokemon_types = response.fetch("types").map { |type| { name: type.fetch("name") }}
-    pokemon_descriptions = response.fetch("descriptions").map { |description| { resource_uri: description.fetch("resource_uri") }}
-    # get request to get descriptionb hash and then take what i need form there requestpokemon_descriptions = response.fetch
+    access_description = response.fetch("descriptions").map { |description| { resource_uri: description.fetch("resource_uri") }}
+    pokemon_description = HTTParty.get(POKE_URI + access_description.first[:resource_uri])
     pokemon_evolutions = response.fetch("evolutions").map do |evolution|
       {
         level: evolution.fetch("level"),
@@ -27,15 +27,18 @@ class PokedexController < ApplicationController
         to: evolution.fetch("to")
       }
       end
-    pokemon_sprite = response.fetch("sprites").map { |sprite| { resource_uri: sprite.fetch("resource_uri") }}
-
+    access_sprite = response.fetch("sprites").map { |sprite| { resource_uri: sprite.fetch("resource_uri") }}
+    pokemon_sprite = HTTParty.get(POKE_URI + access_sprite.first[:resource_uri])
     response = {
       name: response.fetch("name"),
       id: response.fetch("national_id"),
-      types: pokemon_types,
-      description: pokemon_descriptions.first,
-      evolutions: pokemon_evolutions,
-      sprites: pokemon_sprite
+      type1: pokemon_types[0][:name],
+      type2: pokemon_types[1][:name],
+      description: pokemon_description["description"],
+      level: pokemon_evolutions[0][:level],
+      method: pokemon_evolutions[0][:method],
+      to: pokemon_evolutions[0][:to],
+      sprite: pokemon_sprite["image"]
       }
     return response
   end

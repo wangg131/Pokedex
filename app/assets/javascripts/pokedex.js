@@ -20,13 +20,16 @@ $(function() {
   });
 
   function displayData(data) {
-    console.log(data);
-      name = data.name + data.id;
-      id = data.id;
-      type = data.type;
+      name_and_id = data.name + " #" + data.id;
+      var type1 = data.type1;
+      var type2 = data.type2;
       description = data.description;
-      evolutions = data.evolutions;
-      $('.description').append(name, type, description);
+      evolutions = data.level + data.method + data.to;
+      var sprite = "http://pokeapi.co" + data.sprite;
+      var img = new Image();
+      img.src = sprite;
+      $('.description').append(name_and_id, type1, type2, description, evolutions);
+      $('.sprite').append(sprite);
     return data;
   }
 
