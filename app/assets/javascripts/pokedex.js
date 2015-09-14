@@ -29,7 +29,7 @@ $(function() {
       var img = new Image();
       img.src = sprite;
       $('.description').append(name_and_id, type1, type2, description, evolutions);
-      $('.sprite').append(sprite);
+      $('.sprite').append(img);
     return data;
   }
 

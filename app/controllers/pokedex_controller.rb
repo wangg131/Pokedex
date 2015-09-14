@@ -29,6 +29,7 @@ class PokedexController < ApplicationController
       end
     access_sprite = response.fetch("sprites").map { |sprite| { resource_uri: sprite.fetch("resource_uri") }}
     pokemon_sprite = HTTParty.get(POKE_URI + access_sprite.first[:resource_uri])
+
     response = {
       name: response.fetch("name"),
       id: response.fetch("national_id"),
