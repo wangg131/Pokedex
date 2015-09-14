@@ -17,4 +17,4 @@
 /tmp
 
 .DS_Store
-spec/vcr/*
+spec/fixtures/vcr/*
