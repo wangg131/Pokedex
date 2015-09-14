@@ -27,11 +27,12 @@ $(function() {
       $('.sprite').append(img);
       var two_types = "<p>Types: " + data.type1 + " & " + data.type2 + "</p>";
       var one_type = "<p>Type: " + data.type1 + "</p>";
+      var description = "<p>" + data.description + "</p>";
       if (data.hasOwnProperty('type2')) {
-        $('.description').append(name_and_id, two_types, data.description);
+        $('.profile').append(name_and_id, two_types, description);
       }
       else {
-        $('.description').append(name_and_id, one_type, data.description);
+        $('.profile').append(name_and_id, one_type, description);
       }
     return data;
   }
@@ -39,11 +40,11 @@ $(function() {
   function pokemonStats(data) {
     var pokedex = $( ".results" ).addClass( "pokedex" );
     var $sprite = $( "<div class='sprite'/>" );
-    var $description = $("<div class='description'/>");
+    var $profile = $("<div class='profile'/>");
     if ($('.results').is(':empty')) {
-        pokedex.append($sprite, $description);
+      pokedex.append($sprite, $profile);
     } else {
-      pokedex.empty().append($sprite, $description);
+      pokedex.empty().append($sprite, $profile);
     }
     displayData(data);
   }

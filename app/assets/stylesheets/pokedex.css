@@ -21,6 +21,7 @@ html {
   background: tomato;
   margin: auto;
   float: none;
+  margin-top: 2em;
   border-radius: 27px;
   border-style: solid;
   border-color: black;
@@ -43,7 +44,7 @@ html {
 
 }
 
-.description {
+.profile {
   width: 80%;
   left: 10%;
   height: 200px;
@@ -60,4 +61,28 @@ html {
 
 img {
   margin-top: 2em;
+}
+
+form, form div {
+  display: inline;
+}
+
+.search {
+    width: 6em;
+    height: 2em;
+}
+
+.text_box {
+  height: 2em;
+  font-size: 12px;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+.description_paragraph {
+  margin-left: 20px;
+  margin-right: 20px;
+
 }
