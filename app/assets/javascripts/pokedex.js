@@ -11,26 +11,24 @@ $(function() {
     var formTag = searchButton.parents(".navbar-form");
     var text_box = formTag.children(".text_box");
     var search_input = text_box.val();
-    var url = "http://pokeapi.co/api/v1/pokemon/" + search_input;
+    var url = "/" + search_input;
 
     $.ajax(url, {
       type: 'GET',
       success: pokemonStats
     });
-
   });
 
   function displayData(data) {
     for (var i = 0; i < data.length; i++) {
-      pokemon_name = data[i].artist + ": " + data[i].title;
-      url = data[i].url;
-      var anchor = $('<a></a>');
-      anchor.text(artist_title);
-      anchor.prop('href', url);
-      var p_tag = $('<p></p>');
-      p_tag.append(anchor);
-      $('.results').append(p_tag);
+      name = data.name;
+      id = data.id;
+      type = data.type;
+      description = data.description;
+      evolutions = data.evolutions;
+      sprites = data.sprites;
     }
+    console.log(data);
     return data;
   }
 
@@ -39,8 +37,7 @@ $(function() {
     var $sprite = $( "<div class='sprite'/>" );
     var $description = $("<div class='description'/>");
     pokedex.append($sprite, $description);
-
-
+    displayData(data);
   }
 
 });

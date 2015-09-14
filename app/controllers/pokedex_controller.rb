@@ -4,10 +4,9 @@ class PokedexController < ApplicationController
 
   def search_query
     begin
-      response = HTTParty.get(POKESEARCH, query: { "id" => params[:id] }) #change to name
+      response = HTTParty.get(POKESEARCH + params[:id]) #change to name
       data = fetching_data(response)
       code = :ok
-      print response
     rescue
       data = {}
       code = :no_content
@@ -30,14 +29,15 @@ class PokedexController < ApplicationController
       end
     pokemon_sprite = response.fetch("sprites").map { |sprite| { resource_uri: sprite.fetch("resource_uri") }}
 
-    return {
+    response = {
       name: response.fetch("name"),
       id: response.fetch("national_id"),
       types: pokemon_types,
-      description: pokemon_descriptions.first(""),
+      description: pokemon_descriptions.first,
       evolutions: pokemon_evolutions,
       sprites: pokemon_sprite
       }
+    return response
   end
 
 end
