@@ -20,24 +20,22 @@ $(function() {
   });
 
   function displayData(data) {
-    for (var i = 0; i < data.length; i++) {
-      name = data.name;
+    console.log(data);
+      name = data.name + data.id;
       id = data.id;
       type = data.type;
       description = data.description;
       evolutions = data.evolutions;
-      sprites = data.sprites;
-    }
-    console.log(data);
+      $('.description').append(name, type, description);
     return data;
   }
 
   function pokemonStats(data) {
     var pokedex = $( ".results" ).addClass( "pokedex" );
     var $sprite = $( "<div class='sprite'/>" );
+
     var $description = $("<div class='description'/>");
     pokedex.append($sprite, $description);
     displayData(data);
   }
-
 });
