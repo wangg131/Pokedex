@@ -35,10 +35,10 @@ $(function() {
   }
 
   function pokemonStats(data) {
-    $( ".results" ).addClass( "pokedex" );
-    if ($('.results').is(':empty')) {
-      displayData(data);
-    }
+    var pokedex = $( ".results" ).addClass( "pokedex" );
+    var $sprite = $( "<div class='sprite'/>" );
+    var $description = $("<div class='description'/>");
+    pokedex.append($sprite, $description);
 
 
   }
