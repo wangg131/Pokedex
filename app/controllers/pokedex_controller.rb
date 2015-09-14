@@ -4,7 +4,7 @@ class PokedexController < ApplicationController
 
   def search_query
     begin
-      response = HTTParty.get(POKE_URI + "/api/v1/pokemon/" + params[:id]) #change to name
+      response = HTTParty.get(POKE_URI + "/api/v1/pokemon/" + params[:id])
       data = fetching_data(response)
       code = :ok
     rescue
@@ -15,6 +15,23 @@ class PokedexController < ApplicationController
   end
 
   def search_form; end
+
+  private
+
+# lines 22 - 34 is the start of incorporating the ability to seach for Pokemon by name. Not yet finished.
+  def get_number(name)
+    pokemon_list = HTTParty.get(POKE_URI + "/v1/pokedex/")["objects"][0]["pokemon"]
+    pokemon_list.each do |pokemon_entry|
+      if name.downcase == pokemon_entry["name"]
+        pokemon_entry["resource_uri"]
+        return pokemon_entry["resource_uri"]
+      end
+    end
+  end
+
+  def get_pokemon_by_name(name)
+    HTTParty.get(POKE_URI + get_number(name))
+  end
 
   def fetching_data(response)
     pokemon_types = response.fetch("types").map { |type| { name: type.fetch("name") }}
